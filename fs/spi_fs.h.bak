@@ -1,0 +1,28 @@
+/*###############################################################
+Coep Sat File system SPI Driver file
+Type :- File System- System Calls Header File
+----------------------------------------------------------------
+Author	: - Rahul Bedarkar
+Date	: - 1 March 2010
+----------------------------------------------------------------
+Notes:
+
+###################################################################*/
+#ifndef _SPI_FS_H
+#define _SPI_FS_H
+
+#ifdef _SPI_FS_H
+//extern uint8_t buffer[message_size];
+uint8_t _fs_mount_chip();
+uint8_t _fs_read_data(uint32_t address,uint8_t how_much);
+uint8_t _fs_write_data(uint32_t address,uint8_t length);
+uint8_t _fs_sector_format(uint32_t address);
+uint8_t _fs_chip_format();
+uint8_t _fs_dpd();
+uint8_t _fs_release_4m_dpd();
+uint8_t _fs_read_4m_SR();
+uint8_t _fs_write_to_SR(uint8_t value);
+uint8_t _fs_read_ID();
+#endif
+
+#endif

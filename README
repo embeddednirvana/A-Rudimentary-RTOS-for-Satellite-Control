@@ -1,0 +1,57 @@
+A Rudimentary RTOS for Satellite Control.
+COEP Satellite Project
+Copyright 2011 COEP Satellite Project
+_____________________________________________________________________________________________ 
+
+This is the integrated system software for the control of a small satellite designed by COEP
+students. It is an example of how moderately complex systems are built on Bare Metal. 
+
+This contains the following code:
+
+app:
+bob_tasks.c	- Bunch of rudimentary tasks performed by the system
+
+asm:		- All output of `make asm' goes here
+
+device:		- On chip device drivers
+driver_pio.c		- Parallel IO port
+rtt.c			- Real Time Timer
+sd.c			- SD card
+spi.c			- Serial peripheral interface
+usart.c			
+
+ecc:		- Code for error correction coding on program memory
+hamming2.s		- Hamming code
+scrubs.s		- Data scrubbing
+
+fs:		- A simple File System that is used on the SD card
+patches
+sat_fs.c
+spi_fs.h.bak
+test_main.c
+
+fs/patches:	
+20.10.10.patch
+sat_fs.c
+
+include:		
+AT91SAM7X256.h		- Atmel header for MCU
+bob_tasks.h			
+driver_pio.h
+rtt.h
+sat_fs.h
+sd.h
+spi.h
+SST_config.h		- Configuration file
+task.h
+trace.h
+usart.h
+
+system:
+boot.s			- Bootup code. 
+exc.c			- High level Interrupt Service Routines. Also contains some code to help the
+			  scheduler
+exceptions.s		- Low level exception handlers
+low_level_init.c	- First hardware initialisation
+swi.c			- Software interrupts - a rudimentary system calls interface
+task.c			- Real time scheduler

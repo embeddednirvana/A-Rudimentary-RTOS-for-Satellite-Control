@@ -1,0 +1,14 @@
+--- sat_fs.c	2002-01-01 00:36:10.000000000 +0530
++++ patches/sat_fs.c	2002-01-01 00:25:47.000000000 +0530
+@@ -124,9 +124,9 @@
+ 		address=mat[file_number]->address[message_number];//getting address of the sms to read
+ 		
+ 		length=sd_read_block(&sd,address,buffer);
+-		if(length == 1)					/* Driver interfacing bug. */
++		if( length == message_size )
+ 		{
+-			for(i=0;i<message_size;i++)
++			for(i=0;i<length;i++)
+ 			{		
+ 				temp.data[i]=buffer[i];
+ 			}

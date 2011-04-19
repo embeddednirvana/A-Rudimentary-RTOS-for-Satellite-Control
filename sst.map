@@ -1,0 +1,543 @@
+Archive member included because of file (symbol)
+
+/home/nishchay/CodeSourcery/Sourcery_G++_Lite/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/libc.a(lib_a-memcpy.o)
+                              ./fs/sat_fs.o (memcpy)
+
+Allocating common symbols
+Common symbol       size              file
+
+response            0x8               ./device/sd.o
+global_buffer       0x2               ./device/sd.o
+ptr                 0x4               ./fs/sat_fs.o
+temp                0x201             ./fs/sat_fs.o
+SST_TTBL            0x80              ./system/task.o
+root_fat            0x10              ./fs/sat_fs.o
+asert               0x1               ./device/sd.o
+tempf               0x403             ./fs/sat_fs.o
+system_time         0x4               ./main.o
+data_log            0x3000            ./main.o
+arguments           0x4               ./device/sd.o
+buffer              0x200             ./fs/sat_fs.o
+SST_ready_set       0x1               ./system/task.o
+current             0x4               ./main.o
+root                0x4               ./fs/sat_fs.o
+root_mat            0x0               ./fs/sat_fs.o
+ptrf                0x4               ./fs/sat_fs.o
+mat                 0x0               ./fs/sat_fs.o
+SST_current_priority
+                    0x1               ./system/task.o
+sd                  0xc               ./fs/sat_fs.o
+error               0x1               ./device/sd.o
+return_set          0x1               ./fs/sat_fs.o
+ready               0x1               ./fs/sat_fs.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+FLASH            0x00100000         0x00040000         xr
+RAM              0x00200000         0x00010000         xrw
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD ./main.o
+LOAD ./system/low_level_init.o
+LOAD ./system/swi.o
+LOAD ./system/task.o
+LOAD ./system/exc.o
+LOAD ./device/driver_pio.o
+LOAD ./device/usart.o
+LOAD ./device/rtt.o
+LOAD ./device/spi.o
+LOAD ./device/sd.o
+LOAD ./app/bob_tasks.o
+LOAD ./fs/sat_fs.o
+LOAD boot.o
+LOAD exceptions.o
+START GROUP
+LOAD /home/nishchay/CodeSourcery/Sourcery_G++_Lite/bin/../lib/gcc/arm-none-eabi/4.3.3/libgcc.a
+LOAD /home/nishchay/CodeSourcery/Sourcery_G++_Lite/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/libc.a
+END GROUP
+                0x00000000                C_STACK_SIZE = 0x0
+                0x00000400                IRQ_STACK_SIZE = 0x400
+                0x00000000                FIQ_STACK_SIZE = 0x0
+                0x00000200                UND_STACK_SIZE = 0x200
+                0x00000200                ABT_STACK_SIZE = 0x200
+                0x00000400                SVC_STACK_SIZE = 0x400
+                0x00000000                USR_STACK_SIZE = 0x0
+                0x00000000                HEAP_SIZE = 0x0
+                0x0020fffc                __stack_end__ = 0x20fffc
+
+.reset          0x00100000      0x350
+ *boot.o(.text)
+ .text          0x00100000      0x210 boot.o
+                0x00100000                _entry
+ *low_level_init.o(.text)
+ .text          0x00100210      0x140 ./system/low_level_init.o
+                0x00100210                low_level_hw_init
+                0x00100350                . = ALIGN (0x4)
+
+.ramvect        0x00200000       0x40
+                0x00200000                __ram_start = .
+                0x00200040                . = (. + 0x40)
+ *fill*         0x00200000       0x40 00
+
+.fastcode       0x00200040      0x3fc load address 0x00100350
+                0x00100350                __fastcode_load__ = LOADADDR (.fastcode)
+                0x00200040                __fastcode_start__ = .
+ *(.glue_7t)
+ .glue_7t       0x00000000        0x0 linker stubs
+ *(.glue_7)
+ .glue_7        0x00000000        0x0 linker stubs
+ *(.text.fastcode)
+ .text.fastcode
+                0x00200040       0x30 ./system/swi.o
+                0x00200040                C_SWI_HANDLER
+ .text.fastcode
+                0x00200070       0xf0 ./system/exc.o
+                0x00200088                C_SOFT_RESET
+                0x00200070                C_ANO_HANDLER
+ .text.fastcode
+                0x00200160      0x160 ./device/usart.o
+                0x00200160                usart_init_normal_async
+                0x0020022c                usart_enable
+                0x00200254                usart_putc
+                0x0020028c                usart_getc
+ .text.fastcode
+                0x002002c0      0x17c exceptions.o
+                0x002002c0                IRQ_Handler
+                0x00200370                PABT_Handler
+                0x00200334                SWI_Handler
+                0x002003d0                ANO_Handler
+                0x00200368                UND_Handler
+                0x00200378                DABT_Handler
+                0x0020030c                FIQ_Handler
+                0x0020043c                . = ALIGN (0x4)
+                0x0020043c                __fastcode_end__ = .
+
+.text           0x0020043c     0x3204 load address 0x0010074c
+ CREATE_OBJECT_SYMBOLS
+                0x0010074c                __text_load__ = LOADADDR (.text)
+                0x0020043c                __text_start__ = .
+ *(.text .text.* .gnu.linkonce.t*)
+ .text          0x0020043c      0x2d4 ./main.o
+                0x00200594                main
+                0x0020054c                StartLoop
+ .text          0x00200710       0x10 ./system/swi.o
+                0x0020071c                vPortYieldProcessor
+                0x00200714                Alloc_Fault
+                0x00200710                Return_Case
+                0x00200718                Terminate
+ .text          0x00200720      0x4f4 ./system/task.o
+                0x00200a20                SST_post_event
+                0x00200720                SST_task_create
+                0x002007f8                SST_Scheduler
+ .text          0x00200c14      0x478 ./system/exc.o
+                0x00200e68                SST_Comm_ISR
+                0x00200c14                SST_Tick_ISR
+ .text          0x0020108c      0x1b0 ./device/driver_pio.o
+                0x0020108c                pio_init
+                0x00201160                pio_output
+                0x0020121c                pio_getVal
+                0x002011d8                pio_input
+ .text          0x0020123c       0x44 ./device/usart.o
+                0x0020123c                usart_kbhit
+ .text          0x00201280       0x34 ./device/rtt.o
+                0x00201280                sys_get_time
+ .text          0x002012b4      0x2b0 ./device/spi.o
+                0x00201340                SPI_ConfigureNPCS
+                0x002013c8                SPI_WriteBuffer
+                0x002012d0                SPI_Disable
+                0x002012b4                SPI_Enable
+                0x00201464                SPI_IsFinished
+                0x0020136c                SPI_Write
+                0x002012ec                SPI_Configure
+                0x002014c8                SPI_ReadBuffer
+                0x00201490                SPI_Read
+ .text          0x00201564      0xd1c ./device/sd.o
+                0x00201b10                sd_read_multi_block
+                0x00201cd0                sd_write_multi_block
+                0x002018a8                sd_read_block
+                0x00202268                sd_get_CSD
+                0x00201b34                sd_write_block
+                0x00201608                sd_initialize
+                0x00201e90                is_card_busy
+                0x00202224                sd_set_block_length
+                0x00201ed0                sd_send_command
+                0x00201564                spi_initialize
+                0x00202160                sd_delay
+                0x002021b8                sd_packarg
+ .text          0x00202280      0x3a0 ./app/bob_tasks.o
+                0x0020241c                two
+                0x002025d8                tick_hook
+                0x00202604                idle_hook
+                0x00202280                one
+                0x002025b8                three
+ .text          0x00202620      0xe34 ./fs/sat_fs.o
+                0x00202ee0                format_filesystem
+                0x002029f8                read_message
+                0x00202b0c                read_message_next
+                0x00203428                do_soft_reset
+                0x002033b8                setup_fat_mat
+                0x0020298c                delete_message
+                0x00202f10                check_filesystem
+                0x00202b54                write_message
+                0x00202e80                setup_File_System
+                0x00202e24                fs_mount_chip
+                0x00202f30                reset_fat_mat
+                0x00202620                read_file
+                0x00202748                write_file
+                0x00202f70                store_fat_mat_to_SD
+                0x00202ef8                bad_sector_test
+                0x002031e0                load_fat_mat_from_SD
+                0x00202d18                create_file
+                0x00202884                is_file_ready2_delete
+                0x00202db4                delete_file
+                0x00202eec                read_write_test
+                0x00202c9c                setup_FAT
+                0x00202f04                fat_mat_check
+                0x00202cf4                setup_MAT
+                0x00202c4c                write_message_next
+ .text          0x00203454        0x0 exceptions.o
+ .text          0x00203454      0x1ec /home/nishchay/CodeSourcery/Sourcery_G++_Lite/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/libc.a(lib_a-memcpy.o)
+                0x00203454                memcpy
+ *(.glue_7t)
+ *(.glue_7)
+ *(.rodata .roadata.* .gnu.linkonce.t*)
+                0x00203640                . = ALIGN (0x4)
+                0x00203640                __text_end__ = .
+
+.vfp11_veneer   0x00103950        0x0 load address 0x00203640
+ .vfp11_veneer  0x00000000        0x0 linker stubs
+
+.v4_bx          0x00103950        0x0 load address 0x00203640
+ .v4_bx         0x00000000        0x0 linker stubs
+
+.data           0x00203640      0x110 load address 0x00103950
+                0x00103950                __data_load__ = LOADADDR (.data)
+                0x00203640                __data_start__ = .
+ *(.data .gnu.linkonce.t*)
+ .data          0x00203640        0x0 ./main.o
+ .data          0x00203640        0x0 ./system/low_level_init.o
+ .data          0x00203640       0x10 ./system/swi.o
+                0x00203640                SWI_TABLE
+ .data          0x00203650      0x100 ./system/task.o
+                0x00203650                log2table
+ .data          0x00203750        0x0 ./system/exc.o
+ .data          0x00203750        0x0 ./device/driver_pio.o
+ .data          0x00203750        0x0 ./device/usart.o
+ .data          0x00203750        0x0 ./device/rtt.o
+ .data          0x00203750        0x0 ./device/spi.o
+ .data          0x00203750        0x0 ./device/sd.o
+ .data          0x00203750        0x0 ./app/bob_tasks.o
+ .data          0x00203750        0x0 ./fs/sat_fs.o
+ .data          0x00203750        0x0 boot.o
+ .data          0x00203750        0x0 exceptions.o
+ .data          0x00203750        0x0 /home/nishchay/CodeSourcery/Sourcery_G++_Lite/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/libc.a(lib_a-memcpy.o)
+                0x00203750                . = ALIGN (0x4)
+                0x00203750                __data_end__ = .
+
+.output         0x00103a60        0x0
+                0x00103a60                __output_start = .
+ *parity.o(.data)
+                0x00103a60                . = ALIGN (0x4)
+
+.bss            0x00203750     0x38e2
+                0x00203750                __bss_start__ = .
+ *(.bss .gnu.linkonce.t*)
+ .bss           0x00203750        0x0 ./main.o
+ .bss           0x00203750        0x0 ./system/low_level_init.o
+ .bss           0x00203750        0x0 ./system/swi.o
+ .bss           0x00203750        0x1 ./system/task.o
+ *fill*         0x00203751        0x3 00
+ .bss           0x00203754        0x4 ./system/exc.o
+ .bss           0x00203758        0x0 ./device/driver_pio.o
+ .bss           0x00203758        0x0 ./device/usart.o
+ .bss           0x00203758        0x0 ./device/rtt.o
+ .bss           0x00203758        0x0 ./device/spi.o
+ .bss           0x00203758        0x0 ./device/sd.o
+ .bss           0x00203758        0x8 ./app/bob_tasks.o
+ .bss           0x00203760        0x4 ./fs/sat_fs.o
+                0x00203760                add_temp
+ .bss           0x00203764        0x0 boot.o
+ .bss           0x00203764        0x0 exceptions.o
+ .bss           0x00203764        0x0 /home/nishchay/CodeSourcery/Sourcery_G++_Lite/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/libc.a(lib_a-memcpy.o)
+                0x00203764                . = ALIGN (0x4)
+                0x00203764                __bss_end__ = .
+ COMMON         0x00203764     0x3008 ./main.o
+                0x00203764                system_time
+                0x00203768                data_log
+                0x00206768                current
+ COMMON         0x0020676c       0x82 ./system/task.o
+                0x0020676c                SST_TTBL
+                0x002067ec                SST_ready_set
+                0x002067ed                SST_current_priority
+ COMMON         0x002067ee       0x10 ./device/sd.o
+                0x002067ee                response
+                0x002067f6                global_buffer
+                0x002067f8                asert
+                0x002067f9                arguments
+                0x002067fd                error
+ *fill*         0x002067fe        0x2 00
+ COMMON         0x00206800      0x832 ./fs/sat_fs.o
+                0x00206800                ptr
+                0x00206804                temp
+                0x00206a08                root_fat
+                0x00206a18                tempf
+                0x00206e1b                buffer
+                0x0020701c                root
+                0x00207020                root_mat
+                0x00207020                ptrf
+                0x00207024                mat
+                0x00207024                sd
+                0x00207030                return_set
+                0x00207031                ready
+
+.heap           0x00207032        0x2
+                0x00207032                __heap_start__ = .
+                0x00207032                . = (. + HEAP_SIZE)
+                0x00207034                . = ALIGN (0x4)
+ *fill*         0x00207032        0x2 00
+                0x00207034                __heap_end__ = .
+
+.stack          0x00207034      0xc00
+                0x00207034                __stack_start__ = .
+                0x00207034                . = (. + C_STACK_SIZE)
+                0x00207034                . = ALIGN (0x4)
+                0x00207034                __c_stack_top__ = .
+                0x00207434                . = (. + IRQ_STACK_SIZE)
+ *fill*         0x00207034      0x400 00
+                0x00207434                . = ALIGN (0x4)
+                0x00207434                __irq_stack_top__ = .
+                0x00207834                . = (. + SVC_STACK_SIZE)
+ *fill*         0x00207434      0x400 00
+                0x00207834                . = ALIGN (0x4)
+                0x00207834                __svc_stack_top__ = .
+                0x00207a34                . = (. + ABT_STACK_SIZE)
+ *fill*         0x00207834      0x200 00
+                0x00207a34                . = ALIGN (0x4)
+                0x00207a34                __abt_stack_top__ = .
+                0x00207c34                . = (. + UND_STACK_SIZE)
+ *fill*         0x00207a34      0x200 00
+                0x00207c34                . = ALIGN (0x4)
+                0x00207c34                __und_stack_top__ = .
+                0x00207c34                . = (. + FIQ_STACK_SIZE)
+                0x00207c34                . = ALIGN (0x4)
+                0x00207c34                __fiq_stack_top__ = .
+                0x00207c34                . = (. + USR_STACK_SIZE)
+                0x00207c34                . = ALIGN (0x4)
+                0x00207c34                __usr_stack_top__ = .
+                0x00207c34                _end = .
+OUTPUT(sst.elf elf32-littlearm)
+
+.debug_abbrev   0x00000000      0xce5
+ .debug_abbrev  0x00000000      0x13c ./main.o
+ .debug_abbrev  0x0000013c       0xc2 ./system/low_level_init.o
+ .debug_abbrev  0x000001fe       0xb0 ./system/swi.o
+ .debug_abbrev  0x000002ae      0x125 ./system/task.o
+ .debug_abbrev  0x000003d3      0x116 ./system/exc.o
+ .debug_abbrev  0x000004e9       0xf0 ./device/driver_pio.o
+ .debug_abbrev  0x000005d9      0x112 ./device/usart.o
+ .debug_abbrev  0x000006eb       0x89 ./device/rtt.o
+ .debug_abbrev  0x00000774       0xfb ./device/spi.o
+ .debug_abbrev  0x0000086f      0x190 ./device/sd.o
+ .debug_abbrev  0x000009ff       0xe9 ./app/bob_tasks.o
+ .debug_abbrev  0x00000ae8      0x1d5 ./fs/sat_fs.o
+ .debug_abbrev  0x00000cbd       0x14 boot.o
+ .debug_abbrev  0x00000cd1       0x14 exceptions.o
+
+.debug_info     0x00000000     0x3a1b
+ .debug_info    0x00000000      0x7b8 ./main.o
+ .debug_info    0x000007b8      0x6b1 ./system/low_level_init.o
+ .debug_info    0x00000e69      0x127 ./system/swi.o
+ .debug_info    0x00000f90      0x25a ./system/task.o
+ .debug_info    0x000011ea      0x223 ./system/exc.o
+ .debug_info    0x0000140d      0x3a7 ./device/driver_pio.o
+ .debug_info    0x000017b4      0x746 ./device/usart.o
+ .debug_info    0x00001efa       0xf0 ./device/rtt.o
+ .debug_info    0x00001fea      0x582 ./device/spi.o
+ .debug_info    0x0000256c      0x8b9 ./device/sd.o
+ .debug_info    0x00002e25      0x1d2 ./app/bob_tasks.o
+ .debug_info    0x00002ff7      0x942 ./fs/sat_fs.o
+ .debug_info    0x00003939       0x6e boot.o
+ .debug_info    0x000039a7       0x74 exceptions.o
+
+.debug_line     0x00000000      0xdd1
+ .debug_line    0x00000000      0x106 ./main.o
+ .debug_line    0x00000106       0x7c ./system/low_level_init.o
+ .debug_line    0x00000182       0xd2 ./system/swi.o
+ .debug_line    0x00000254      0x103 ./system/task.o
+ .debug_line    0x00000357      0x11a ./system/exc.o
+ .debug_line    0x00000471      0x10a ./device/driver_pio.o
+ .debug_line    0x0000057b      0x10c ./device/usart.o
+ .debug_line    0x00000687       0xdb ./device/rtt.o
+ .debug_line    0x00000762       0x94 ./device/spi.o
+ .debug_line    0x000007f6      0x1a2 ./device/sd.o
+ .debug_line    0x00000998       0xf2 ./app/bob_tasks.o
+ .debug_line    0x00000a8a      0x1fb ./fs/sat_fs.o
+ .debug_line    0x00000c85       0xa2 boot.o
+ .debug_line    0x00000d27       0xaa exceptions.o
+
+.debug_frame    0x00000000      0x788
+ .debug_frame   0x00000000       0x6c ./main.o
+ .debug_frame   0x0000006c       0x24 ./system/low_level_init.o
+ .debug_frame   0x00000090       0x68 ./system/swi.o
+ .debug_frame   0x000000f8       0x54 ./system/task.o
+ .debug_frame   0x0000014c       0x84 ./system/exc.o
+ .debug_frame   0x000001d0       0x5c ./device/driver_pio.o
+ .debug_frame   0x0000022c       0x74 ./device/usart.o
+ .debug_frame   0x000002a0       0x24 ./device/rtt.o
+ .debug_frame   0x000002c4       0xc4 ./device/spi.o
+ .debug_frame   0x00000388      0x128 ./device/sd.o
+ .debug_frame   0x000004b0       0x7c ./app/bob_tasks.o
+ .debug_frame   0x0000052c      0x228 ./fs/sat_fs.o
+ .debug_frame   0x00000754       0x34 /home/nishchay/CodeSourcery/Sourcery_G++_Lite/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/libc.a(lib_a-memcpy.o)
+
+.debug_loc      0x00000000      0x940
+ .debug_loc     0x00000000       0x88 ./main.o
+ .debug_loc     0x00000088       0x1f ./system/low_level_init.o
+ .debug_loc     0x000000a7       0x2b ./system/swi.o
+ .debug_loc     0x000000d2       0x75 ./system/task.o
+ .debug_loc     0x00000147       0x94 ./system/exc.o
+ .debug_loc     0x000001db       0x5d ./device/driver_pio.o
+ .debug_loc     0x00000238       0x9b ./device/usart.o
+ .debug_loc     0x000002d3       0x1f ./device/rtt.o
+ .debug_loc     0x000002f2      0x117 ./device/spi.o
+ .debug_loc     0x00000409      0x1d4 ./device/sd.o
+ .debug_loc     0x000005dd       0x75 ./app/bob_tasks.o
+ .debug_loc     0x00000652      0x2ee ./fs/sat_fs.o
+
+.debug_pubnames
+                0x00000000      0x744
+ .debug_pubnames
+                0x00000000       0x52 ./main.o
+ .debug_pubnames
+                0x00000052       0x28 ./system/low_level_init.o
+ .debug_pubnames
+                0x0000007a       0x78 ./system/swi.o
+ .debug_pubnames
+                0x000000f2       0x91 ./system/task.o
+ .debug_pubnames
+                0x00000183       0x57 ./system/exc.o
+ .debug_pubnames
+                0x000001da       0x4b ./device/driver_pio.o
+ .debug_pubnames
+                0x00000225       0x6d ./device/usart.o
+ .debug_pubnames
+                0x00000292       0x23 ./device/rtt.o
+ .debug_pubnames
+                0x000002b5       0xae ./device/spi.o
+ .debug_pubnames
+                0x00000363      0x136 ./device/sd.o
+ .debug_pubnames
+                0x00000499       0x48 ./app/bob_tasks.o
+ .debug_pubnames
+                0x000004e1      0x263 ./fs/sat_fs.o
+
+.debug_aranges  0x00000000      0x1f8
+ .debug_aranges
+                0x00000000       0x20 ./main.o
+ .debug_aranges
+                0x00000020       0x20 ./system/low_level_init.o
+ .debug_aranges
+                0x00000040       0x28 ./system/swi.o
+ .debug_aranges
+                0x00000068       0x20 ./system/task.o
+ .debug_aranges
+                0x00000088       0x30 ./system/exc.o
+ .debug_aranges
+                0x000000b8       0x20 ./device/driver_pio.o
+ .debug_aranges
+                0x000000d8       0x40 ./device/usart.o
+ .debug_aranges
+                0x00000118       0x20 ./device/rtt.o
+ .debug_aranges
+                0x00000138       0x20 ./device/spi.o
+ .debug_aranges
+                0x00000158       0x20 ./device/sd.o
+ .debug_aranges
+                0x00000178       0x20 ./app/bob_tasks.o
+ .debug_aranges
+                0x00000198       0x20 ./fs/sat_fs.o
+ .debug_aranges
+                0x000001b8       0x20 boot.o
+ .debug_aranges
+                0x000001d8       0x20 exceptions.o
+
+.debug_str      0x00000000      0xd62
+ .debug_str     0x00000000      0x436 ./main.o
+                                0x474 (size before relaxing)
+ .debug_str     0x00000436       0xba ./system/low_level_init.o
+                                0x37c (size before relaxing)
+ .debug_str     0x000004f0       0x63 ./system/swi.o
+                                0x138 (size before relaxing)
+ .debug_str     0x00000553       0x9b ./system/task.o
+                                0x1ac (size before relaxing)
+ .debug_str     0x000005ee       0xaa ./system/exc.o
+                                0x1d2 (size before relaxing)
+ .debug_str     0x00000698       0x57 ./device/driver_pio.o
+                                0x26d (size before relaxing)
+ .debug_str     0x000006ef      0x127 ./device/usart.o
+                                0x3d8 (size before relaxing)
+ .debug_str     0x00000816       0x20 ./device/rtt.o
+                                0x122 (size before relaxing)
+ .debug_str     0x00000836      0x148 ./device/spi.o
+                                0x2e3 (size before relaxing)
+ .debug_str     0x0000097e      0x153 ./device/sd.o
+                                0x43f (size before relaxing)
+ .debug_str     0x00000ad1       0x45 ./app/bob_tasks.o
+                                0x14c (size before relaxing)
+ .debug_str     0x00000b16      0x24c ./fs/sat_fs.o
+                                0x3af (size before relaxing)
+
+.comment        0x00000000      0x204
+ .comment       0x00000000       0x2b ./main.o
+ .comment       0x0000002b       0x2b ./system/low_level_init.o
+ .comment       0x00000056       0x2b ./system/swi.o
+ .comment       0x00000081       0x2b ./system/task.o
+ .comment       0x000000ac       0x2b ./system/exc.o
+ .comment       0x000000d7       0x2b ./device/driver_pio.o
+ .comment       0x00000102       0x2b ./device/usart.o
+ .comment       0x0000012d       0x2b ./device/rtt.o
+ .comment       0x00000158       0x2b ./device/spi.o
+ .comment       0x00000183       0x2b ./device/sd.o
+ .comment       0x000001ae       0x2b ./app/bob_tasks.o
+ .comment       0x000001d9       0x2b ./fs/sat_fs.o
+
+.ARM.attributes
+                0x00000000       0x2e
+ .ARM.attributes
+                0x00000000       0x30 ./main.o
+ .ARM.attributes
+                0x00000030       0x30 ./system/low_level_init.o
+ .ARM.attributes
+                0x00000060       0x30 ./system/swi.o
+ .ARM.attributes
+                0x00000090       0x30 ./system/task.o
+ .ARM.attributes
+                0x000000c0       0x30 ./system/exc.o
+ .ARM.attributes
+                0x000000f0       0x30 ./device/driver_pio.o
+ .ARM.attributes
+                0x00000120       0x30 ./device/usart.o
+ .ARM.attributes
+                0x00000150       0x30 ./device/rtt.o
+ .ARM.attributes
+                0x00000180       0x30 ./device/spi.o
+ .ARM.attributes
+                0x000001b0       0x30 ./device/sd.o
+ .ARM.attributes
+                0x000001e0       0x30 ./app/bob_tasks.o
+ .ARM.attributes
+                0x00000210       0x30 ./fs/sat_fs.o
+ .ARM.attributes
+                0x00000240       0x20 boot.o
+ .ARM.attributes
+                0x00000260       0x20 exceptions.o
+ .ARM.attributes
+                0x00000280       0x30 /home/nishchay/CodeSourcery/Sourcery_G++_Lite/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/libc.a(lib_a-memcpy.o)
+
+.debug_ranges   0x00000000       0xa0
+ .debug_ranges  0x00000000       0x38 ./system/swi.o
+ .debug_ranges  0x00000038       0x30 ./system/exc.o
+ .debug_ranges  0x00000068       0x38 ./device/usart.o
